@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="(*FUNCTION_NAME*)" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION (*FUNCTION_NAME*) : TOD
+VAR_INPUT
+   day   : USINT;
+   month : USINT;
+END_VAR
+VAR
+(*VAR*)
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST>
+IF (day   > 31) OR (day   = 0) THEN day   := 1; END_IF
+IF (month > 12) OR (month = 0) THEN month := 1; END_IF
+
+
+(*FUNCTION_NAME*) := (*VARNAME*)[month][day];
+</ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
